@@ -1,5 +1,6 @@
 package com.sprinter.keychain.presenters
 
+import android.os.Build
 import android.os.Bundle
 import android.os.Vibrator
 import com.arellomobile.mvp.InjectViewState
@@ -46,8 +47,10 @@ class AuthorizationPresenter constructor(private val authManager: AuthorizationM
         authManager.setupStrategy(AuthorizationManager.AUTHORIZATION_STRATEGY_PIN_CODE)
 
         if (authManager.hasAuthData()) {
-            authManager.setupStrategy(AuthorizationManager.AUTHORIZATION_STRATEGY_FINGERPRINT)
-            authManager.signIn(Bundle.EMPTY)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                authManager.setupStrategy(AuthorizationManager.AUTHORIZATION_STRATEGY_FINGERPRINT)
+                authManager.signIn(Bundle.EMPTY)
+            }
 
             if (!authManager.isAvailable) {
                 authManager.setupStrategy(AuthorizationManager.AUTHORIZATION_STRATEGY_PIN_CODE);
