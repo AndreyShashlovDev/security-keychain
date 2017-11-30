@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.AppCompatImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/wBtnDone"
+    android:layout_width="@dimen/default_view_height"
+    android:layout_height="@dimen/default_view_height"
+    android:background="?attr/selectableItemBackground"
+    android:padding="@dimen/default_margin_padding_least"
+    app:srcCompat="@drawable/ic_done_white" />

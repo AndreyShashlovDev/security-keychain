@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/color_bdd5aaf2</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:editTextStyle">@style/AppTheme.EditText.Normal</item>
+        <item name="editTextStyle">@style/AppTheme.EditText.Normal</item>
+        <item name="buttonNormal">@style/AppTheme.Button.Normal</item>
+        <item name="textRegular">@style/AppTheme.TextView</item>
+        <item name="textLight">@style/AppTheme.TextView.Light</item>
+        <item name="textMedium">@style/AppTheme.TextView.Medium</item>
+        <item name="textBold">@style/AppTheme.TextView.Bold</item>
+        <item name="textPincodeTitle">@style/AppTheme.TextView.Pincode.Title</item>
+        <item name="textPincodeSubTitle">@style/AppTheme.TextView.Pincode.SubTitle</item>
+        <item name="textLightError">@style/AppTheme.TextView.Light.Error</item>
+        <item name="editTextNormal">@style/AppTheme.EditText.Normal</item>
+    </style>
+
+</resources>

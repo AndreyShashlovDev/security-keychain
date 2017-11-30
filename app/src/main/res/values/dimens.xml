@@ -1,0 +1,42 @@
+<resources>
+
+    <!-- Default margin/padding-->
+    <dimen name="default_margin_padding_least">4dp</dimen>
+    <dimen name="default_margin_padding_small">8dp</dimen>
+    <dimen name="default_margin_padding_medium">12dp</dimen>
+    <dimen name="default_margin_padding_normal">14dp</dimen>
+    <dimen name="default_margin_padding_large">24dp</dimen>
+    <dimen name="default_margin_padding_largest">36dp</dimen>
+
+    <!-- Default radius corners-->
+    <dimen name="default_radius_corners_small">8dp</dimen>
+    <dimen name="default_radius_corners_normal">14dp</dimen>
+    <dimen name="default_radius_corners_large">24dp</dimen>
+
+    <!-- Default icon sizes -->
+    <dimen name="default_icon_size_small">24dp</dimen>
+    <dimen name="default_icon_size_middle">36dp</dimen>
+    <dimen name="default_icon_size_normal">48dp</dimen>
+
+    <!-- Text -->
+    <dimen name="text_size_smallest">10dp</dimen>
+    <dimen name="text_size_normal">14dp</dimen>
+    <dimen name="text_size_large">18dp</dimen>
+    <dimen name="text_size_biggest">36dp</dimen>
+
+    <!-- Buttons -->
+    <dimen name="button_corners">4dp</dimen>
+    <dimen name="button_width_normal">300dp</dimen>
+
+    <!-- default view dimens-->
+    <dimen name="default_view_height">45dp</dimen>
+    <dimen name="default_view_small_height">35dp</dimen>
+
+    <!-- Pin -->
+    <dimen name="pin_dots_size">15dp</dimen>
+    <dimen name="pin_title_height">60dp</dimen>
+
+    <!-- Category items -->
+    <dimen name="category_item_height">48dp</dimen>
+
+</resources>

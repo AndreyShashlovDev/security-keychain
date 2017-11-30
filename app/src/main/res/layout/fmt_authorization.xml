@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pin_title_height">
+
+        <TextView
+            android:id="@+id/pinMessage"
+            style="?textRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin_padding_normal"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/pin.msg.pin.not.exist"
+            android:textSize="@dimen/text_size_large" />
+
+    </FrameLayout>
+
+    <com.sprinter.keychain.ui.views.PinDotsView
+        android:id="@+id/pinDots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="@dimen/default_margin_padding_large"
+        android:layout_marginLeft="@dimen/default_margin_padding_large"
+        android:layout_marginRight="@dimen/default_margin_padding_large"
+        android:layout_marginStart="@dimen/default_margin_padding_large" />
+
+    <com.sprinter.keychain.ui.views.PinGridView
+        android:id="@+id/pinKeyboard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/default_margin_padding_large"
+        android:layout_marginRight="@dimen/default_margin_padding_large"
+        android:layout_marginTop="@dimen/default_margin_padding_largest"
+        android:layout_weight="0.85" />
+
+</LinearLayout>

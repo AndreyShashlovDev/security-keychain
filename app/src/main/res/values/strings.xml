@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- App -->
+    <string name="app.name">KeyChain</string>
+    <string name="app.message.initialization">Please wait. Initialization of security storage. It will be once&#8230;</string>
+
+    <!-- default dialog buttons -->
+    <string name="dialog.button.ok">OK</string>
+    <string name="dialog.button.cancel">Cancel</string>
+    <string name="dialog.button.delete">Delete</string>
+    <string name="dialog.button.donot.save">Don\'t save</string>
+    <string name="dialog.button.save">Save</string>
+
+    <!-- Default dialogs-->
+    <string name="dialog.default.error">Something went wrong!</string>
+
+    <!-- Authorization -->
+    <string name="pin.msg.pin.repeat">Please, repeat pin</string>
+    <string name="pin.msg.pin.not.exist">Please, setup new pin</string>
+
+    <!-- Category -->
+    <string name="category.menu.add">Add</string>
+    <string name="category.menu.delete">Delete</string>
+    <string name="category.menu.edit">Edit</string>
+    <string name="category.list.empty">You do not have categories. You can add them by clicking the "Plus" button on the toolbar.</string>
+    <string name="category.categoryitem.list.empty">You do not have items in this category. You can add them by clicking menu of the category and select "Add"</string>
+    <string name="category.dialog.create">Please type the name of category</string>
+    <string name="category.dialog.delete">Are you really sure that you want to delete the category?</string>
+    <string name="category.dialog.item.delete">Are you really sure that you want to delete the item of category?</string>
+
+    <!-- Keys -->
+    <string name="key.item.title.hint">Name of item</string>
+    <string name="key.item.value.hint">Value of</string>
+    <string name="key.item.copied">Copied</string>
+    <string name="key.dialog.delete.keypair">Are you really sure that you want to delete the key pair?</string>
+    <string name="key.dialog.exit.without.saving">Are you sure you want to exit without saving?</string>
+
+    <string-array name="key.types">
+        <item>Email</item>
+        <item>Password</item>
+        <item>Login</item>
+        <item>Alias</item>
+        <item>Phone</item>
+        <item>Api key</item>
+        <item>App id</item>
+        <item>Private key</item>
+        <item>Public key</item>
+        <item>CVV</item>
+        <item>Date</item>
+        <item>Pin</item>
+        <item>Code</item>
+    </string-array>
+</resources>

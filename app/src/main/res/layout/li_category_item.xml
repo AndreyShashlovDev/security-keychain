@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeCategoryItem"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/category_item_height"
+    app:leftEdgeSwipeOffset="0dp"
+    app:rightEdgeSwipeOffset="0dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:weightSum="10">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/liCategoryItemDelete"
+            android:layout_width="@dimen/category_item_height"
+            android:layout_height="@dimen/category_item_height"
+            android:background="?attr/selectableItemBackground"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_delete_white" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/liCategoryItemEdit"
+            android:layout_width="@dimen/category_item_height"
+            android:layout_height="@dimen/category_item_height"
+            android:layout_marginEnd="@dimen/default_margin_padding_normal"
+            android:layout_marginStart="@dimen/default_margin_padding_normal"
+            android:background="?attr/selectableItemBackground"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_edit_white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/liCategoryItemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/default_margin_padding_normal"
+        android:paddingRight="@dimen/default_margin_padding_normal">
+
+        <TextView
+            android:id="@+id/liCategoryItemTitle"
+            style="?textLight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@android:color/black"
+            tools:text="item" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_arrow_right" />
+
+    </LinearLayout>
+
+</com.daimajia.swipe.SwipeLayout>
