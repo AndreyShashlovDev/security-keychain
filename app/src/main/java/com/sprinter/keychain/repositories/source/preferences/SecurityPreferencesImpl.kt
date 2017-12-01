@@ -11,7 +11,6 @@ internal class SecurityPreferencesImpl(context: Context) : SecurityPreferences {
             context.applicationContext)
 
     init {
-
         CipherHelper.initializeKeystore(SecurityPreferences.KEYSTORE_ALIAS_NAME, context)
     }
 

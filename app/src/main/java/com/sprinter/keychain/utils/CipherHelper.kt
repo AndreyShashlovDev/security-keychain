@@ -286,7 +286,6 @@ class CipherHelper private constructor() {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     fun aesKeyStoreEncrypt(alias: String, originMessage: String): String? {
         try {
             val ivParams = getAesIvSpec(alias)
@@ -322,7 +321,6 @@ class CipherHelper private constructor() {
         return null
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     fun aesKeyStoreDecrypt(alias: String, base64Message: String): String? {
         try {
             val originEncodeMessage = Base64.decode(base64Message, Base64.NO_WRAP)
@@ -529,6 +527,7 @@ class CipherHelper private constructor() {
             if (instance.isAliasExist(alias)) {
                 return
             }
+            Thread.sleep(1000) //dirty hack. create androidKeyStore freeze app even in worker thread
             instance.generateKeyPairRsaStrongWithKeystore(alias, context)
 
             instance.generateKeyPairAesStrong(alias)

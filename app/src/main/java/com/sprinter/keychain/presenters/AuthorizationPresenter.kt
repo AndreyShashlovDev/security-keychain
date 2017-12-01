@@ -50,12 +50,15 @@ class AuthorizationPresenter constructor(private val authManager: AuthorizationM
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 authManager.setupStrategy(AuthorizationManager.AUTHORIZATION_STRATEGY_FINGERPRINT)
                 authManager.signIn(Bundle.EMPTY)
-            }
 
-            if (!authManager.isAvailable) {
-                authManager.setupStrategy(AuthorizationManager.AUTHORIZATION_STRATEGY_PIN_CODE);
+                if (!authManager.isAvailable) {
+                    authManager.setupStrategy(AuthorizationManager.AUTHORIZATION_STRATEGY_PIN_CODE);
+                    viewState.hideFingerprint();
+                }
+            } else {
                 viewState.hideFingerprint();
             }
+            
             viewState.hideMessageText()
         }
 
