@@ -11,6 +11,7 @@ import android.text.InputFilter
 import android.text.InputType
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import com.sprinter.keychain.R
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import timber.log.Timber
@@ -49,8 +50,8 @@ class InputTextDialogFragment : AbstractDialogFragment(), DialogInterface.OnClic
             editText.setSelection(editText.text.length)
         }
 
-        builder.setPositiveButton("OK", this)
-        builder.setNegativeButton("Cancel", this)
+        builder.setPositiveButton(R.string.dialog_button_ok, this)
+        builder.setNegativeButton(R.string.dialog_button_cancel, this)
         builder.setCancelable(false)
 
         isCancelable = false

@@ -2,10 +2,10 @@
 
 buildscript {
     ext {
-        kotlin_version = '1.2.0'
+        kotlin_version = '1.2.10'
 
-        appVersionCode = 3;
-        appVersionName = '0.1.0'
+        appVersionCode = 4;
+        appVersionName = '0.1.1'
         appCompileSdkVersion = 26
         appMinSdkVersion = 21
         appTargetSdkVersion = appCompileSdkVersion

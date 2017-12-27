@@ -1,0 +1,54 @@
+<resources>
+
+    <!-- App -->
+    <string name="app.name">KeyChain</string>
+    <string name="app.message.initialization">Пожалуйста подождите. Инициализация безопасного хранилища. Это будет единожды.&#8230;</string>
+
+    <!-- default dialog buttons -->
+    <string name="dialog.button.ok">OK</string>
+    <string name="dialog.button.cancel">Отмена</string>
+    <string name="dialog.button.delete">Удалить</string>
+    <string name="dialog.button.donot.save">Не сохранять</string>
+    <string name="dialog.button.save">Сохранить</string>
+
+    <!-- Default dialogs-->
+    <string name="dialog.default.error">Что-то пошло не так!</string>
+
+    <!-- Authorization -->
+    <string name="pin.msg.pin.repeat">Пожалуйста, повторите пароль.</string>
+    <string name="pin.msg.pin.not.exist">Пожалуйста, придумайте и введите новый пинкод.</string>
+
+    <!-- Category -->
+    <string name="category.menu.add">Добавить</string>
+    <string name="category.menu.delete">Удалить</string>
+    <string name="category.menu.edit">Редактировать</string>
+    <string name="category.list.empty">У вас еще нет категорий. Вы можете добавить их, нажав \'+\' в заголовке приложения.</string>
+    <string name="category.categoryitem.list.empty">Данная категория пуста. Для добавления элементов в категорию, нажмите на меню категории и выберите пункт меню \'Добавить\'</string>
+    <string name="category.dialog.create">Введите название категории.</string>
+    <string name="category.dialog.delete">Вы действительно хотите удалить выбранную категорию?</string>
+    <string name="category.dialog.item.delete">Вы действительно хотите удалить данный элемент?</string>
+
+    <!-- Keys -->
+    <string name="key.item.title.hint">Название элемента</string>
+    <string name="key.item.value.hint">Значение</string>
+    <string name="key.item.copied">Скопировано в буфер&#8230;</string>
+    <string name="key.dialog.delete.keypair">Вы действительно хотите удалить данную пару?</string>
+    <string name="key.dialog.exit.without.saving">Вы действительно хотите выйти без сохранения?</string>
+
+    <string-array name="key.types">
+        <item>Email</item>
+        <item>Password</item>
+        <item>Login</item>
+        <item>Alias</item>
+        <item>Phone</item>
+        <item>Api key</item>
+        <item>App id</item>
+        <item>Private key</item>
+        <item>Public key</item>
+        <item>CVV</item>
+        <item>Date</item>
+        <item>Pin</item>
+        <item>Code</item>
+    </string-array>
+
+</resources>
