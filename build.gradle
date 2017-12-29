@@ -10,6 +10,7 @@ buildscript {
         appMinSdkVersion = 21
         appTargetSdkVersion = appCompileSdkVersion
         appBuildToolsVersion = '27.0.1'
+        appName = 'KeyChain'
         appApplicationId = 'com.sprinter.keychain'
     }
 

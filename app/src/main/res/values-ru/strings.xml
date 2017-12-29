@@ -1,7 +1,6 @@
 <resources>
 
     <!-- App -->
-    <string name="app.name">KeyChain</string>
     <string name="app.message.initialization">Пожалуйста подождите. Инициализация безопасного хранилища. Это будет единожды.&#8230;</string>
 
     <!-- default dialog buttons -->

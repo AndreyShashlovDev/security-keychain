@@ -1,7 +1,6 @@
 <resources>
 
     <!-- App -->
-    <string name="app.name">KeyChain</string>
     <string name="app.message.initialization">Please wait. Initialization of security storage. It will be once&#8230;</string>
 
     <!-- default dialog buttons -->
@@ -50,4 +49,5 @@
         <item>Pin</item>
         <item>Code</item>
     </string-array>
+
 </resources>
