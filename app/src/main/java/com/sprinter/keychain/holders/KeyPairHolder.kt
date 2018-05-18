@@ -15,9 +15,11 @@ class KeyPairHolder(itemView: View) : AbstractHolder<Pair<String, String>>(itemV
         AdapterView.OnItemSelectedListener {
 
     private var listener: ItemClickListener? = null
-    private var keyPairChangeListener: KeyPairRecyclerAdapter.KeyPairChangeListener? = null;
-    private val keyTypeAdapter: ArrayAdapter<String> = ArrayAdapter(itemView.context,
-            R.layout.li_spinner_item)
+    private var keyPairChangeListener: KeyPairRecyclerAdapter.KeyPairChangeListener? = null
+    private val keyTypeAdapter: ArrayAdapter<String> = ArrayAdapter(
+            itemView.context,
+            R.layout.li_spinner_item
+    )
 
     init {
         keyTypeAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
@@ -91,8 +93,11 @@ class KeyPairHolder(itemView: View) : AbstractHolder<Pair<String, String>>(itemV
     override fun onNothingSelected(parent: AdapterView<*>?) {}
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        keyPairChangeListener?.textChanged(adapterPosition, keyTypeAdapter.getItem(position),
-                itemView.liKeyPairKeyType.id)
+        keyPairChangeListener?.textChanged(
+                adapterPosition,
+                keyTypeAdapter.getItem(position),
+                itemView.liKeyPairKeyType.id
+        )
     }
 
 }

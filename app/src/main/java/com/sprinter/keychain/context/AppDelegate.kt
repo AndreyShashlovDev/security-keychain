@@ -24,8 +24,15 @@ class AppDelegate : Application() {
             System.exit(0)
         }
 
-        Fabric.with(this, Crashlytics.Builder().core(
-                CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build()).build())
+        Fabric.with(
+                this,
+                Crashlytics.Builder()
+                        .core(
+                                CrashlyticsCore.Builder()
+                                .disabled(BuildConfig.DEBUG)
+                                .build()
+                        ).build()
+        )
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())

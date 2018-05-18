@@ -64,11 +64,18 @@ class KeysPresenter(private val keysRepository: KeysRepository,
     }
 
     fun onBackPressed() {
-        if (isChanged || (categoryItem != null && categoryItem?.title != categoryItemTitle) || categoryItem == null && !TextUtils.isEmpty(
-                categoryItemTitle)) {
-            viewState.showDialogMessage(R.string.key_dialog_exit_without_saving,
-                    R.string.dialog_button_save, R.string.dialog_button_donot_save, 0,
-                    REQUEST_DIALOG_WITHOUT_SAVE)
+        if (isChanged ||
+            (categoryItem != null && categoryItem?.title != categoryItemTitle) ||
+            categoryItem == null && !TextUtils.isEmpty(categoryItemTitle)
+        ) {
+            viewState.showDialogMessage(
+                    R.string.key_dialog_exit_without_saving,
+                    R.string.dialog_button_save,
+                    R.string.dialog_button_donot_save,
+                    0,
+                    REQUEST_DIALOG_WITHOUT_SAVE
+            )
+
         } else {
             router.activeBackPress(true)
             viewState.onBackPressed()
@@ -77,18 +84,20 @@ class KeysPresenter(private val keysRepository: KeysRepository,
 
     private fun fetchCategoryItem() {
         if (categoryItemId > 0) {
-            keysRepository.getCategoryItemById(categoryId, categoryItemId).compose(
-                    RxUtils::async).compose(bindUntilDestroy()).subscribe({ result ->
-                visibilityLoading(false)
-                categoryItem = result
-                items.clear()
-                items.addAll(result.items)
-                val title = category?.title + (if (TextUtils.isEmpty(
-                        result.title)) "" else "-") + result.title
-                viewState.setTitle(title)
-                viewState.setCategoryTitle(result.title)
-                viewState.setKeyList(result.items)
-            }, this::onError)
+            keysRepository.getCategoryItemById(categoryId, categoryItemId)
+                    .compose(RxUtils::async)
+                    .compose(bindUntilDestroy())
+                    .subscribe({ result ->
+                        visibilityLoading(false)
+                        categoryItem = result
+                        items.clear()
+                        items.addAll(result.items)
+                        val title = category?.title +
+                                    (if (TextUtils.isEmpty(result.title)) "" else "-") + result.title
+                        viewState.setTitle(title)
+                        viewState.setCategoryTitle(result.title)
+                        viewState.setKeyList(result.items)
+                    }, this::onError)
         } else {
             visibilityLoading(false)
         }
@@ -105,23 +114,27 @@ class KeysPresenter(private val keysRepository: KeysRepository,
         isEditMode(false)
 
         if (categoryItem == null) {
-            keysRepository.createCategoryItem(categoryId, categoryItemTitle).compose(
-                    RxUtils::async).compose(bindUntilDestroy()).flatMapCompletable({ categoryItem ->
-                (categoryItem.items as MutableList).addAll(items)
-                keysRepository.updateCategoryItem(categoryItem)
-            }).subscribe({
-                router.activeBackPress(true)
-                viewState.onBackPressed()
-            }, this::onError)
+            keysRepository.createCategoryItem(categoryId, categoryItemTitle)
+                    .compose(RxUtils::async)
+                    .compose(bindUntilDestroy())
+                    .flatMapCompletable({ categoryItem ->
+                        (categoryItem.items as MutableList).addAll(items)
+                        keysRepository.updateCategoryItem(categoryItem)
+                    }).subscribe({
+                        router.activeBackPress(true)
+                        viewState.onBackPressed()
+                    }, this::onError)
         } else {
             (categoryItem!!.items as MutableList).clear()
             (categoryItem!!.items as MutableList).addAll(items)
             categoryItem?.title = categoryItemTitle
-            keysRepository.updateCategoryItem(categoryItem!!).compose(RxUtils::async).compose(
-                    bindUntilDestroy<CompletableTransformer>()).subscribe({
-                router.activeBackPress(true)
-                viewState.onBackPressed()
-            }, this::onError)
+            keysRepository.updateCategoryItem(categoryItem!!)
+                    .compose(RxUtils::async)
+                    .compose(bindUntilDestroy<CompletableTransformer>())
+                    .subscribe({
+                        router.activeBackPress(true)
+                        viewState.onBackPressed()
+                    }, this::onError)
         }
     }
 
@@ -182,9 +195,14 @@ class KeysPresenter(private val keysRepository: KeysRepository,
         val bundle = Bundle()
         bundle.putInt(BUNDLE_DIALOG_KEY_PAIR_POSITION, position)
 
-        viewState.showDialogMessage(R.string.key_dialog_delete_keypair,
-                R.string.dialog_button_cancel, R.string.dialog_button_delete, 0,
-                REQUEST_DIALOG_DELETE_KEY_PAIR, bundle)
+        viewState.showDialogMessage(
+                R.string.key_dialog_delete_keypair,
+                R.string.dialog_button_cancel,
+                R.string.dialog_button_delete,
+                0,
+                REQUEST_DIALOG_DELETE_KEY_PAIR,
+                bundle
+        )
     }
 
     private fun onCopyKeyValue(position: Int) {
@@ -200,6 +218,7 @@ class KeysPresenter(private val keysRepository: KeysRepository,
                 viewState.setKeyList(items)
                 isChanged = true
             }
+
         } else if (result.requestCode == REQUEST_DIALOG_WITHOUT_SAVE) {
             if (result.buttonId == DialogInterface.BUTTON_POSITIVE) {
                 saveCategoryItem()

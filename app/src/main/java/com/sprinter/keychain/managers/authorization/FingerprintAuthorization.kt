@@ -27,7 +27,8 @@ class FingerprintAuthorization(context: Context) : AbstractAuthorization(context
                 context) == SensorState.READY && CipherHelper.instance.isReady
 
     private enum class SensorState {
-        NOT_SUPPORTED, NOT_BLOCKED, // If the device is not protected by a pin, pattern or password
+        NOT_SUPPORTED,
+        NOT_BLOCKED, // If the device is not protected by a pin, pattern or password
         NO_FINGERPRINTS, // If there are no prints on the device
         READY
     }
@@ -47,6 +48,7 @@ class FingerprintAuthorization(context: Context) : AbstractAuthorization(context
             sendResultFail()
             return
         }
+
         val cryptoObject = FingerprintManagerCompat.CryptoObject(
                 CipherHelper.instance.getCipherAesFingerprint())
 
@@ -125,8 +127,8 @@ class FingerprintAuthorization(context: Context) : AbstractAuthorization(context
 
         companion object {
 
-            internal val KEY_ERROR = "ERROR"
-            internal val KEY_MESSAGE = "MESSAGE"
+            internal const val KEY_ERROR = "ERROR"
+            internal const val KEY_MESSAGE = "MESSAGE"
 
         }
 
@@ -134,7 +136,7 @@ class FingerprintAuthorization(context: Context) : AbstractAuthorization(context
 
     companion object {
 
-        private val KEY_ALIAS = "com.bitclave.base.fingerprint"
+        private const val KEY_ALIAS = "com.bitclave.base.fingerprint"
 
         fun fromBundle(bundle: Bundle): FingerprintMessage {
             val msgId = bundle.getInt(FingerprintMessage.KEY_ERROR)

@@ -1,15 +1,11 @@
 package com.sprinter.keychain.managers.authorization
 
-
 import android.support.annotation.IntDef
-
-import java.lang.annotation.Retention
-import java.lang.annotation.RetentionPolicy
 
 interface AuthorizationManager : Authorization {
 
     @IntDef(AUTHORIZATION_STRATEGY_FINGERPRINT.toLong(), AUTHORIZATION_STRATEGY_PIN_CODE.toLong())
-    @Retention(RetentionPolicy.SOURCE)
+    @Retention(AnnotationRetention.SOURCE)
     annotation class AuthorizationType
 
     fun addStrategy(strategyId: Int, strategy: AbstractAuthorization)

@@ -48,8 +48,9 @@ class CategoryHolder constructor(itemView: View) : AbstractHolder<Category>(item
     }
 
     fun expanded(expand: Boolean) {
-        itemView.liCategoryExpand.setImageResource(
-                if (expand) R.drawable.ic_expand_less else R.drawable.ic_expand_more)
+        itemView.liCategoryExpand
+                .setImageResource(if (expand) R.drawable.ic_expand_less else R.drawable.ic_expand_more)
+
         itemView.liCategoryListContainer.visibility = if (expand) View.VISIBLE else View.GONE
     }
 

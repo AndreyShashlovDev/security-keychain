@@ -53,7 +53,11 @@ class CategoriesRecyclerAdapter :
 
     companion object {
 
-        @IdRes private val CLICKABLE_LAYOUT_ITEMS = intArrayOf(R.id.liCategoryExpand, R.id.liCategoryTitle, R.id.liCategoryMenu)
+        @IdRes private val CLICKABLE_LAYOUT_ITEMS = intArrayOf(
+                R.id.liCategoryExpand,
+                R.id.liCategoryTitle,
+                R.id.liCategoryMenu
+        )
 
     }
 

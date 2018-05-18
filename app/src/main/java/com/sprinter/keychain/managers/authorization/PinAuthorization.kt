@@ -66,7 +66,7 @@ class PinAuthorization(context: Context) : AbstractAuthorization(context) {
 
     companion object {
 
-        private val KEY_ALIAS = "com.bitclave.base.pincode"
+        private const val KEY_ALIAS = "com.bitclave.base.pincode"
 
         fun createBundle(pincode: String): Bundle {
             val bundle = Bundle()

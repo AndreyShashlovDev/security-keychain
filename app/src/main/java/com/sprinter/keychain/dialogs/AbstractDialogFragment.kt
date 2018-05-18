@@ -72,7 +72,7 @@ abstract class AbstractDialogFragment : DialogFragment(), OnDialogButtonClickLis
 
     companion object {
 
-        val NO_REQUEST_CODE = -1
+        const val NO_REQUEST_CODE = -1
     }
 
 }

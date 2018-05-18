@@ -23,14 +23,20 @@ class PinDotsView : LinearLayout {
         init(context)
     }
 
-    constructor(context: Context, attrs: AttributeSet?, @AttrRes defStyleAttr: Int) : super(context,
-            attrs, defStyleAttr) {
+    constructor(
+            context: Context,
+            attrs: AttributeSet?,
+            @AttrRes defStyleAttr: Int
+    ) : super(context, attrs, defStyleAttr) {
         init(context)
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP) constructor(context: Context, attrs: AttributeSet?,
-            @AttrRes defStyleAttr: Int, @StyleRes defStyleRes: Int) : super(context, attrs,
-            defStyleAttr, defStyleRes) {
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP) constructor(
+            context: Context,
+            attrs: AttributeSet?,
+            @AttrRes defStyleAttr: Int,
+            @StyleRes defStyleRes: Int
+    ) : super(context, attrs, defStyleAttr, defStyleRes) {
         init(context)
     }
 
@@ -65,7 +71,8 @@ class PinDotsView : LinearLayout {
     companion object {
 
         const val COUNT_DOTS = 5 // from 0 to number of count;
-        private val COUNT_DOTS_WEIGHT = COUNT_DOTS + 1 // started from index 1 (+1);
+        private const val COUNT_DOTS_WEIGHT = COUNT_DOTS + 1 // started from index 1 (+1);
+
     }
 
 }

@@ -22,9 +22,6 @@ class AuthorizationPresenter constructor(private val authManager: AuthorizationM
         private val router: Router, private val vibrator: Vibrator) :
         AbstractPresenter<AuthorizationView>(), PinGridView.OnPinKeyboardClickListener {
 
-    private val VIBRATE_DURATION_MS_ON_CLICK: Long = 50
-    private val VIBRATE_DURATION_MS_PIN_WRONG: Long = 300
-
     private var pinBuilder: StringBuilder = StringBuilder()
     private var needRepeatPin: Boolean = false
     private var repeatedPin: String = ""
@@ -58,7 +55,7 @@ class AuthorizationPresenter constructor(private val authManager: AuthorizationM
             } else {
                 viewState.hideFingerprint();
             }
-            
+
             viewState.hideMessageText()
         }
 
@@ -148,6 +145,11 @@ class AuthorizationPresenter constructor(private val authManager: AuthorizationM
         pinBuilder.delete(0, pinBuilder.length)
         viewState.animationWrongPin(R.anim.anim_shake)
         viewState.enabledPinKeyboard(true)
+    }
+
+    companion object {
+        private const val VIBRATE_DURATION_MS_ON_CLICK: Long = 50
+        private const val VIBRATE_DURATION_MS_PIN_WRONG: Long = 300
     }
 
 }

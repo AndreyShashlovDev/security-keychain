@@ -22,14 +22,20 @@ class WrapContentListView : ListView {
         init(context, attrs)
     }
 
-    constructor(context: Context, attrs: AttributeSet?, @AttrRes defStyleAttr: Int) : super(context,
-            attrs, defStyleAttr) {
+    constructor(
+            context: Context,
+            attrs: AttributeSet?,
+            @AttrRes defStyleAttr: Int
+    ) : super(context, attrs, defStyleAttr) {
         init(context, attrs)
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP) constructor(context: Context, attrs: AttributeSet?,
-            @AttrRes defStyleAttr: Int, @StyleRes defStyleRes: Int) : super(context, attrs,
-            defStyleAttr, defStyleRes) {
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP) constructor(
+            context: Context,
+            attrs: AttributeSet?,
+            @AttrRes defStyleAttr: Int,
+            @StyleRes defStyleRes: Int
+    ) : super(context, attrs, defStyleAttr, defStyleRes) {
         init(context, attrs)
     }
 

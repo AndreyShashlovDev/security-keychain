@@ -111,7 +111,8 @@ class ToolbarView : AppBarLayout {
         const val STATE_HOME_BUTTON_HOME = 0
         const val STATE_HOME_BUTTON_BACK = 1
 
-        private val VIEW_PROPERTY_PROGRESS = "progress"
+        private const val VIEW_PROPERTY_PROGRESS = "progress"
+
     }
 
 }

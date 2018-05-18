@@ -21,7 +21,7 @@ class AppContextImpl constructor(val context: Context) : AppContext {
     init {
         Completable.fromAction({
             authorizationManager = AuthorizationManagerFactory.createDefault(context)
-            repositories = RepositoriesFactory.createDefault(context);
+            repositories = RepositoriesFactory.createDefault(context)
             behaviorSubject.onNext(this)
         }).compose(RxUtils::async).subscribe()
     }

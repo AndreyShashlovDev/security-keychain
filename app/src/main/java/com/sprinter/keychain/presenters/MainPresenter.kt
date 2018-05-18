@@ -17,11 +17,14 @@ class MainPresenter(private val appContext: AppContext) : AbstractPresenter<Main
 
         viewState.visibilityToolbar(false)
         viewState.visibilityPreloader(true)
-        appContext.hasInitialized().compose(RxUtils::async).compose(bindUntilDestroy()).subscribe({
-            appContext.router().openAuthorizationScreen()
-            viewState.visibilityPreloader(false)
-            appContextInitialized = true
-        })
+        appContext.hasInitialized()
+                .compose(RxUtils::async)
+                .compose(bindUntilDestroy())
+                .subscribe({
+                    appContext.router().openAuthorizationScreen()
+                    viewState.visibilityPreloader(false)
+                    appContextInitialized = true
+                })
     }
 
     override fun detachView(view: MainView) {

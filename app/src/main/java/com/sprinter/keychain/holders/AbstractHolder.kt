@@ -46,7 +46,7 @@ abstract class AbstractHolder<D>(itemView: View) : RecyclerView.ViewHolder(itemV
 
     companion object {
 
-        val NO_RES_ID = -1
+        const val NO_RES_ID = -1
 
     }
 

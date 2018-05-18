@@ -56,8 +56,8 @@ class PincodeGridItem : FrameLayout {
             pincodeView.image.setImageResource(drawable)
         }
 
-        pincodeView.liCategoryTitle.setVisibility(visibility)
-        pincodeView.subTitle.setVisibility(visibility)
+        pincodeView.liCategoryTitle.visibility = visibility
+        pincodeView.subTitle.visibility = visibility
     }
 
     fun getDrawableResId(): Int = drawableResId

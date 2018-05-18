@@ -78,10 +78,16 @@ internal class RouterImpl(context: Context) : Router, Application.ActivityLifecy
         isBackPressActive = active
     }
 
-    private fun changeFragment(fragment: Fragment, tag: String, clearBackStack: Boolean,
-            replace: Boolean = true, @AnimatorRes @AnimRes enter: Int = 0, @AnimatorRes @AnimRes
-            exit: Int = 0, @AnimatorRes @AnimRes popEnter: Int = 0, @AnimatorRes @AnimRes
-            popExit: Int = 0) {
+    private fun changeFragment(
+            fragment: Fragment,
+            tag: String,
+            clearBackStack: Boolean,
+            replace: Boolean = true,
+            @AnimatorRes @AnimRes enter: Int = 0,
+            @AnimatorRes @AnimRes exit: Int = 0,
+            @AnimatorRes @AnimRes popEnter: Int = 0,
+            @AnimatorRes @AnimRes popExit: Int = 0
+    ) {
         try {
             val manager = activityOnTop?.supportFragmentManager ?: return
 
@@ -105,39 +111,67 @@ internal class RouterImpl(context: Context) : Router, Application.ActivityLifecy
             }
             transaction.commitAllowingStateLoss()
             AndroidUtils.hideSoftKeyboard(activityOnTop!!)
+
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
     override fun openCategoriesScreen() {
-        changeFragment(CategoriesFragment.newInstance(), CategoriesFragment.FRAGMENT_TAG, true,
-                false)
+        changeFragment(
+                CategoriesFragment.newInstance(),
+                CategoriesFragment.FRAGMENT_TAG,
+                true,
+                false
+        )
     }
 
     override fun openAuthorizationScreen() {
-        changeFragment(AuthorizationFragment.newInstance(), AuthorizationFragment.FRAGMENT_TAG,
-                true, false)
+        changeFragment(
+                AuthorizationFragment.newInstance(),
+                AuthorizationFragment.FRAGMENT_TAG,
+                true,
+                false
+        )
     }
 
     override fun openEditKeysScreen(categoryId: Long, categoryItemId: Long) {
-        changeFragment(KeysFragment.newInstance(true, categoryId, categoryItemId),
-                KeysFragment.FRAGMENT_TAG, false, true, R.anim.anim_out_bottom_to_top,
-                R.anim.anim_top_to_top_out, R.anim.anim_top_out_to_top,
-                R.anim.anim_top_to_bottom_out)
+        changeFragment(
+                KeysFragment.newInstance(true, categoryId, categoryItemId),
+                KeysFragment.FRAGMENT_TAG,
+                false,
+                true,
+                R.anim.anim_out_bottom_to_top,
+                R.anim.anim_top_to_top_out,
+                R.anim.anim_top_out_to_top,
+                R.anim.anim_top_to_bottom_out
+        )
     }
 
     override fun openViewKeysScreen(categoryId: Long, categoryItemId: Long) {
-        changeFragment(KeysFragment.newInstance(false, categoryId, categoryItemId),
-                KeysFragment.FRAGMENT_TAG, false, true, R.anim.anim_right_to_left,
-                R.anim.anim_right_right_out, R.anim.anim_out_left_to_left,
-                R.anim.anim_left_to_right_out)
+        changeFragment(
+                KeysFragment.newInstance(false, categoryId, categoryItemId),
+                KeysFragment.FRAGMENT_TAG,
+                false,
+                true,
+                R.anim.anim_right_to_left,
+                R.anim.anim_right_right_out,
+                R.anim.anim_out_left_to_left,
+                R.anim.anim_left_to_right_out
+        )
     }
 
     override fun openCreateKeysScreen(categoryId: Long) {
-        changeFragment(KeysFragment.newInstance(true, categoryId, 0), KeysFragment.FRAGMENT_TAG,
-                false, true, R.anim.anim_right_to_left, R.anim.anim_right_right_out,
-                R.anim.anim_out_left_to_left, R.anim.anim_left_to_right_out)
+        changeFragment(
+                KeysFragment.newInstance(true, categoryId, 0),
+                KeysFragment.FRAGMENT_TAG,
+                false,
+                true,
+                R.anim.anim_right_to_left,
+                R.anim.anim_right_right_out,
+                R.anim.anim_out_left_to_left,
+                R.anim.anim_left_to_right_out
+        )
     }
 
 }

@@ -27,9 +27,11 @@ class PinGridView : GridLayout, View.OnClickListener {
 
     }
 
-    private class TextItem internal constructor(private val title: String,
+    private class TextItem internal constructor(
+            private val title: String,
             private val subTitle: String?,
-            private val enabled: Boolean = true) : GridItem {
+            private val enabled: Boolean = true
+    ) : GridItem {
 
         override fun createGridItem(context: Context): PincodeGridItem {
             val gridItem = PincodeGridItem(context)
@@ -43,9 +45,10 @@ class PinGridView : GridLayout, View.OnClickListener {
         }
     }
 
-    private class ImageItem internal constructor(@param:DrawableRes
-    @field:DrawableRes private val imageResId: Int, private val enabled: Boolean = true) :
-            GridItem {
+    private class ImageItem internal constructor(
+            @DrawableRes private val imageResId: Int,
+            private val enabled: Boolean = true
+    ) : GridItem {
 
         override fun createGridItem(context: Context): PincodeGridItem {
             val gridItem = PincodeGridItem(context)
@@ -60,8 +63,11 @@ class PinGridView : GridLayout, View.OnClickListener {
         }
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs,
-            defStyle) {
+    constructor(
+            context: Context,
+            attrs: AttributeSet,
+            defStyle: Int
+    ) : super(context, attrs, defStyle) {
         init(context)
     }
 
