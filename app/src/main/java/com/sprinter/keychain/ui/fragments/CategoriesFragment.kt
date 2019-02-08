@@ -73,7 +73,7 @@ class CategoriesFragment : AbstractFragment<CategoriesPresenter>(), CategoriesVi
         val popup = PopupMenu(context!!, view)
         popup.menuInflater.inflate(R.menu.category_menu, popup.menu)
 
-        popup.setOnMenuItemClickListener({ item -> presenter.onMenuClick(position, item.itemId) })
+        popup.setOnMenuItemClickListener { item -> presenter.onMenuClick(position, item.itemId) }
 
         val menuHelper = MenuPopupHelper(context!!, popup.menu as MenuBuilder, view)
         menuHelper.setForceShowIcon(true)

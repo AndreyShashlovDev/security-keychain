@@ -20,24 +20,24 @@ class MessageDialogFragment : AbstractDialogFragment() {
 
         val builder = AlertDialog.Builder(context!!).setTitle(
                 arguments?.getString(ARGS_TITLE, "")).setPositiveButton(
-                arguments?.getString(ARGS_POSITIVE_BUTTON_TEXT), { _, which ->
+                arguments?.getString(ARGS_POSITIVE_BUTTON_TEXT)) { _, which ->
             dialogSubject.onNext(TupleDialogResult(which, requestCode, bundle))
-        })
+        }
 
         if (!TextUtils.isEmpty(arguments?.getString(ARGS_NEGATIVE_BUTTON_TEXT))) {
-            builder.setNegativeButton(arguments?.getString(ARGS_NEGATIVE_BUTTON_TEXT),
-                    { dialog, which ->
-                        dialogSubject.onNext(TupleDialogResult(which, requestCode, bundle))
-                    })
+            builder.setNegativeButton(arguments?.getString(ARGS_NEGATIVE_BUTTON_TEXT)) { _, which ->
+                dialogSubject.onNext(TupleDialogResult(which, requestCode, bundle))
+            }
         }
         if (!TextUtils.isEmpty(arguments?.getString(ARGS_NEUTRAL_BUTTON_TEXT))) {
-            builder.setNeutralButton(arguments?.getString(ARGS_NEUTRAL_BUTTON_TEXT),
-                    { dialog, which ->
-                        dialogSubject.onNext(TupleDialogResult(which, requestCode, bundle))
-                    })
+            builder.setNeutralButton(arguments?.getString(ARGS_NEUTRAL_BUTTON_TEXT)) { _, which ->
+                dialogSubject.onNext(TupleDialogResult(which, requestCode, bundle))
+            }
         }
 
-        builder.setCancelable(false).setMessage(arguments?.getString(ARGS_MESSAGE, "")).create()
+        builder.setCancelable(false)
+                .setMessage(arguments?.getString(ARGS_MESSAGE, ""))
+                .create()
         this.isCancelable = false
 
         return builder.create()
@@ -46,13 +46,13 @@ class MessageDialogFragment : AbstractDialogFragment() {
     companion object {
 
         private val FRAGMENT_TAG = MessageDialogFragment::class.java.simpleName
-        const private val ARGS_TITLE = "ARGS_TITLE"
-        const private val ARGS_MESSAGE = "ARGS_MESSAGE"
-        const private val ARGS_POSITIVE_BUTTON_TEXT = "ARGS_POSITIVE_BUTTON_TEXT"
-        const private val ARGS_NEGATIVE_BUTTON_TEXT = "ARGS_NEGATIVE_BUTTON_TEXT"
-        const private val ARGS_NEUTRAL_BUTTON_TEXT = "ARGS_NEUTRAL_BUTTON_TEXT"
-        const private val ARGS_REQUEST_CODE = "ARGS_REQUEST_CODE"
-        const private val ARGS_REQUEST_BUNDLE = "ARGS_REQUEST_BUNDLE"
+        private const val ARGS_TITLE = "ARGS_TITLE"
+        private const val ARGS_MESSAGE = "ARGS_MESSAGE"
+        private const val ARGS_POSITIVE_BUTTON_TEXT = "ARGS_POSITIVE_BUTTON_TEXT"
+        private const val ARGS_NEGATIVE_BUTTON_TEXT = "ARGS_NEGATIVE_BUTTON_TEXT"
+        private const val ARGS_NEUTRAL_BUTTON_TEXT = "ARGS_NEUTRAL_BUTTON_TEXT"
+        private const val ARGS_REQUEST_CODE = "ARGS_REQUEST_CODE"
+        private const val ARGS_REQUEST_BUNDLE = "ARGS_REQUEST_BUNDLE"
 
         @JvmOverloads
         fun showDialog(fragmentManager: FragmentManager, title: String, message: String,

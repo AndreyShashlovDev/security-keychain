@@ -34,7 +34,7 @@ abstract class AbstractRecyclerAdapter<D, T : AbstractHolder<D>> constructor(
     protected abstract fun onInitViewHolder(parent: ViewGroup, inflater: LayoutInflater,
             viewType: Int): T
 
-    override open fun onBindViewHolder(holder: T, position: Int) {
+    open override fun onBindViewHolder(holder: T, position: Int) {
         holder.setData(mData[position])
         holder.setOnItemClick(this, getClickableItems())
     }
@@ -71,7 +71,7 @@ abstract class AbstractRecyclerAdapter<D, T : AbstractHolder<D>> constructor(
         super.onViewRecycled(holder)
     }
 
-    override open fun onItemClick(position: Int, @IdRes id: Int, tag: String?) {
+    open override fun onItemClick(position: Int, @IdRes id: Int, tag: String?) {
         clickListener?.onItemClick(position, id, tag)
     }
 

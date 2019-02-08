@@ -78,11 +78,11 @@ class InputTextDialogFragment : AbstractDialogFragment(), DialogInterface.OnClic
 
         private val FRAGMENT_TAG = InputTextDialogFragment::class.java.simpleName
 
-        const private val ARGS_MESSAGE = "ARGS_MESSAGE"
-        const public val ARGS_VALUE = "ARGS_VALUE"
-        const private val ARGS_MAX_LEN = "ARGS_MAX_LEN"
-        const private val ARGS_REQUEST_CODE = "ARGS_REQUEST_CODE"
-        const private val ARGS_REQUEST_BUNDLE = "ARGS_REQUEST_BUNDLE"
+        private const val ARGS_MESSAGE = "ARGS_MESSAGE"
+        const val ARGS_VALUE = "ARGS_VALUE"
+        private const val ARGS_MAX_LEN = "ARGS_MAX_LEN"
+        private const val ARGS_REQUEST_CODE = "ARGS_REQUEST_CODE"
+        private const val ARGS_REQUEST_BUNDLE = "ARGS_REQUEST_BUNDLE"
 
         fun showDialog(fragmentManager: FragmentManager, message: String, value: String,
                 maxLen: Int, requestCode: Int, bundle: Bundle?): Observable<TupleDialogResult> {

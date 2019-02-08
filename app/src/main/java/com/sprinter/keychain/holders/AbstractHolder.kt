@@ -35,7 +35,7 @@ abstract class AbstractHolder<D>(itemView: View) : RecyclerView.ViewHolder(itemV
         }
     }
 
-    override open fun onClick(view: View) {
+    open override fun onClick(view: View) {
         clickListener?.onItemClick(adapterPosition, view.id, null)
     }
 

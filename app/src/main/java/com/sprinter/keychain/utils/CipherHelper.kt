@@ -63,15 +63,7 @@ class CipherHelper private constructor() {
             cipherAes = Cipher.getInstance(ALGORITHM_AES_WITH_PARAMS)
             isReady = true
 
-        } catch (e: NoSuchAlgorithmException) {
-            e.printStackTrace()
-        } catch (e: NoSuchPaddingException) {
-            e.printStackTrace()
-        } catch (e: CertificateException) {
-            e.printStackTrace()
-        } catch (e: KeyStoreException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
     }
@@ -114,7 +106,7 @@ class CipherHelper private constructor() {
             if (keyStore.containsAlias(alias)) {
                 keyStore.deleteEntry(alias)
             }
-        } catch (e: KeyStoreException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
     }
@@ -148,17 +140,7 @@ class CipherHelper private constructor() {
             keyGen.init(spec)
             keyGen.generateKey()
 
-        } catch (e: NoSuchProviderException) {
-            e.printStackTrace()
-        } catch (e: NoSuchAlgorithmException) {
-            e.printStackTrace()
-        } catch (e: InvalidAlgorithmParameterException) {
-            e.printStackTrace()
-        } catch (e: CertificateException) {
-            e.printStackTrace()
-        } catch (e: KeyStoreException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
     }
@@ -177,17 +159,7 @@ class CipherHelper private constructor() {
             val encryptedKey = rsaKeyStoreEncrypt(alias, keyBase64)
             preferences.edit().putString(PREF_AES_KEY, encryptedKey).apply()
 
-        } catch (e: NoSuchProviderException) {
-            e.printStackTrace()
-        } catch (e: NoSuchAlgorithmException) {
-            e.printStackTrace()
-        } catch (e: InvalidAlgorithmParameterException) {
-            e.printStackTrace()
-        } catch (e: CertificateException) {
-            e.printStackTrace()
-        } catch (e: KeyStoreException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
     }
@@ -222,17 +194,7 @@ class CipherHelper private constructor() {
 
             return keyPairGenerator.generateKeyPair()
 
-        } catch (e: NoSuchProviderException) {
-            e.printStackTrace()
-        } catch (e: NoSuchAlgorithmException) {
-            e.printStackTrace()
-        } catch (e: InvalidAlgorithmParameterException) {
-            e.printStackTrace()
-        } catch (e: CertificateException) {
-            e.printStackTrace()
-        } catch (e: KeyStoreException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
 
@@ -261,17 +223,7 @@ class CipherHelper private constructor() {
 
             return generator.generateKeyPair()
 
-        } catch (e: NoSuchAlgorithmException) {
-            e.printStackTrace()
-        } catch (e: InvalidAlgorithmParameterException) {
-            e.printStackTrace()
-        } catch (e: NoSuchProviderException) {
-            e.printStackTrace()
-        } catch (e: KeyStoreException) {
-            e.printStackTrace()
-        } catch (e: CertificateException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
 
@@ -300,21 +252,7 @@ class CipherHelper private constructor() {
 
             return Base64.encodeToString(encryptedBytes, Base64.NO_WRAP)
 
-        } catch (e: KeyStoreException) {
-            e.printStackTrace()
-        } catch (e: NoSuchAlgorithmException) {
-            e.printStackTrace()
-        } catch (e: InvalidKeyException) {
-            e.printStackTrace()
-        } catch (e: UnrecoverableEntryException) {
-            e.printStackTrace()
-        } catch (e: IllegalBlockSizeException) {
-            e.printStackTrace()
-        } catch (e: BadPaddingException) {
-            e.printStackTrace()
-        } catch (e: UnsupportedEncodingException) {
-            e.printStackTrace()
-        } catch (e: InvalidAlgorithmParameterException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
 
@@ -329,19 +267,7 @@ class CipherHelper private constructor() {
 
             return if (encryptedBytes == null) null else String(encryptedBytes, UTF_8)
 
-        } catch (e: KeyStoreException) {
-            e.printStackTrace()
-        } catch (e: NoSuchAlgorithmException) {
-            e.printStackTrace()
-        } catch (e: InvalidKeyException) {
-            e.printStackTrace()
-        } catch (e: UnrecoverableEntryException) {
-            e.printStackTrace()
-        } catch (e: IllegalBlockSizeException) {
-            e.printStackTrace()
-        } catch (e: BadPaddingException) {
-            e.printStackTrace()
-        } catch (e: InvalidAlgorithmParameterException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
 
@@ -426,21 +352,7 @@ class CipherHelper private constructor() {
 
             return Base64.encodeToString(encryptedBytes, Base64.NO_WRAP)
 
-        } catch (e: NoSuchAlgorithmException) {
-            e.printStackTrace()
-        } catch (e: UnrecoverableEntryException) {
-            e.printStackTrace()
-        } catch (e: KeyStoreException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        } catch (e: InvalidKeyException) {
-            e.printStackTrace()
-        } catch (e: BadPaddingException) {
-            e.printStackTrace()
-        } catch (e: IllegalBlockSizeException) {
-            e.printStackTrace()
-        } catch (e: InvalidAlgorithmParameterException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
 
@@ -456,17 +368,7 @@ class CipherHelper private constructor() {
 
             return String(decryptedBytes, UTF_8)
 
-        } catch (e: NoSuchAlgorithmException) {
-            e.printStackTrace()
-        } catch (e: UnrecoverableEntryException) {
-            e.printStackTrace()
-        } catch (e: KeyStoreException) {
-            e.printStackTrace()
-        } catch (e: IllegalBlockSizeException) {
-            e.printStackTrace()
-        } catch (e: BadPaddingException) {
-            e.printStackTrace()
-        } catch (e: InvalidKeyException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         }
 
@@ -513,7 +415,7 @@ class CipherHelper private constructor() {
 
                 return digest.digest()
 
-            } catch (e: NoSuchAlgorithmException) {
+            } catch (e: Throwable) {
                 throw RuntimeException(e)
             }
 

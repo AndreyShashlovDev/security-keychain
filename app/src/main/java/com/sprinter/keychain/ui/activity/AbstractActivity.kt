@@ -42,7 +42,7 @@ abstract class AbstractActivity<E : MvpPresenter<*>> : MvpAppCompatActivity(), A
         window.setFlags(WindowManager.LayoutParams.FLAG_SECURE,
                 WindowManager.LayoutParams.FLAG_SECURE)
 
-        val layout: BindLayout = javaClass.getAnnotation(BindLayout::class.java)
+        val layout: BindLayout? = javaClass.getAnnotation(BindLayout::class.java)
         if (layout != null) {
             setContentView(layout.value)
         }
@@ -73,7 +73,7 @@ abstract class AbstractActivity<E : MvpPresenter<*>> : MvpAppCompatActivity(), A
 
         dialogDisposable = MessageDialogFragment.showDialog(supportFragmentManager,
                 getString(R.string.app_name), message, positiveBtn, negativeBtn, neutralBtn,
-                requestCode ?: 0, bundle).compose(RxUtils::async).subscribe(
+                requestCode, bundle).compose(RxUtils::async).subscribe(
                 this::onDialogMessageResult, { throwable -> Timber.e(throwable, "dialog") })
     }
 
@@ -90,7 +90,7 @@ abstract class AbstractActivity<E : MvpPresenter<*>> : MvpAppCompatActivity(), A
         showDialogInput(messageText, value, maxLen, requestCode, bundle)
     }
 
-    override open fun onDialogMessageResult(result: TupleDialogResult) {
+    open override fun onDialogMessageResult(result: TupleDialogResult) {
     }
 
     override fun setOnBackPressedListener(listener: ActivityBaseView.OnBackPressedListener?) {

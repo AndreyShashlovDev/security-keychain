@@ -23,22 +23,23 @@ class CategoryItemListAdapter(val items: MutableList<String>) : BaseSwipeAdapter
         }
 
         rootView.liCategoryItemTitle.text = items[position]
-        rootView.liCategoryItemContainer.setOnClickListener({ view ->
+        rootView.liCategoryItemContainer.setOnClickListener{ view ->
             if (rootView.swipeCategoryItem.openStatus == SwipeLayout.Status.Close) {
                 listener?.onItemClick(getPosition(rootView), view.id, null)
             } else {
                 rootView.swipeCategoryItem.close()
             }
-        })
+        }
 
-        rootView.liCategoryItemDelete.setOnClickListener({ view ->
+        rootView.liCategoryItemDelete.setOnClickListener{ view ->
             rootView.swipeCategoryItem.close()
             listener?.onItemClick(getPosition(rootView), view.id, null)
-        })
-        rootView.liCategoryItemEdit.setOnClickListener({ view ->
+        }
+
+        rootView.liCategoryItemEdit.setOnClickListener{ view ->
             rootView.swipeCategoryItem.close()
             listener?.onItemClick(getPosition(rootView), view.id, null)
-        })
+        }
     }
 
     override fun getSwipeLayoutResourceId(position: Int): Int = R.id.swipeCategoryItem

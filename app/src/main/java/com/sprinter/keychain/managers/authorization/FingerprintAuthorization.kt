@@ -136,7 +136,7 @@ class FingerprintAuthorization(context: Context) : AbstractAuthorization(context
 
     companion object {
 
-        private const val KEY_ALIAS = "com.bitclave.base.fingerprint"
+        private const val KEY_ALIAS = "com.sprinter.keychain.fingerprint"
 
         fun fromBundle(bundle: Bundle): FingerprintMessage {
             val msgId = bundle.getInt(FingerprintMessage.KEY_ERROR)

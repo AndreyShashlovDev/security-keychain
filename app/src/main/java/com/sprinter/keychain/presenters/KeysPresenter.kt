@@ -54,13 +54,13 @@ class KeysPresenter(private val keysRepository: KeysRepository,
 
     override fun attachView(view: KeysView) {
         super.attachView(view)
-        disposable = toolbarClickSubject?.subscribe({
+        disposable = toolbarClickSubject?.subscribe{
             when (it) {
                 R.id.toolbarHomeImage -> onBackPressed()
                 R.id.wBtnAdd -> onAddPairClick()
                 R.id.wBtnDone -> saveCategoryItem()
             }
-        })
+        }
     }
 
     fun onBackPressed() {
@@ -117,10 +117,10 @@ class KeysPresenter(private val keysRepository: KeysRepository,
             keysRepository.createCategoryItem(categoryId, categoryItemTitle)
                     .compose(RxUtils::async)
                     .compose(bindUntilDestroy())
-                    .flatMapCompletable({ categoryItem ->
+                    .flatMapCompletable { categoryItem ->
                         (categoryItem.items as MutableList).addAll(items)
                         keysRepository.updateCategoryItem(categoryItem)
-                    }).subscribe({
+                    }.subscribe({
                         router.activeBackPress(true)
                         viewState.onBackPressed()
                     }, this::onError)

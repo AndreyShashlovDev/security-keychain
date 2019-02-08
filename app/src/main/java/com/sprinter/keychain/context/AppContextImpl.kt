@@ -19,11 +19,11 @@ class AppContextImpl constructor(val context: Context) : AppContext {
     private lateinit var repositories: Repositories;
 
     init {
-        Completable.fromAction({
+        Completable.fromAction {
             authorizationManager = AuthorizationManagerFactory.createDefault(context)
             repositories = RepositoriesFactory.createDefault(context)
             behaviorSubject.onNext(this)
-        }).compose(RxUtils::async).subscribe()
+        }.compose(RxUtils::async).subscribe()
     }
 
     override fun hasInitialized(): Observable<AppContext> {

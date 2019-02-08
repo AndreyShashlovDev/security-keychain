@@ -20,11 +20,11 @@ class MainPresenter(private val appContext: AppContext) : AbstractPresenter<Main
         appContext.hasInitialized()
                 .compose(RxUtils::async)
                 .compose(bindUntilDestroy())
-                .subscribe({
+                .subscribe {
                     appContext.router().openAuthorizationScreen()
                     viewState.visibilityPreloader(false)
                     appContextInitialized = true
-                })
+                }
     }
 
     override fun detachView(view: MainView) {

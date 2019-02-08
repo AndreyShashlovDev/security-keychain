@@ -37,17 +37,17 @@ object RootHelper {
 
     private fun executeRuntime(): Boolean {
         var process: Process? = null
-        try {
+        return try {
             process = Runtime.getRuntime().exec(arrayOf("/system/xbin/which", "su"))
             val reader = BufferedReader(InputStreamReader(process!!.inputStream))
 
-            return reader.readLine() != null
+            reader.readLine() != null
 
         } catch (t: Throwable) {
-            return false
+            false
 
         } finally {
-            if (process != null) process.destroy()
+            process?.destroy()
         }
     }
 

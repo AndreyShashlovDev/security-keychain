@@ -121,8 +121,8 @@ internal class RouterImpl(context: Context) : Router, Application.ActivityLifecy
         changeFragment(
                 CategoriesFragment.newInstance(),
                 CategoriesFragment.FRAGMENT_TAG,
-                true,
-                false
+                clearBackStack = true,
+                replace = false
         )
     }
 

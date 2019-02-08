@@ -20,7 +20,7 @@ interface Preferences {
 
     companion object {
 
-        val KEYSTORE_ALIAS_NAME = "KeyChain"
+        const val KEYSTORE_ALIAS_NAME = "KeyChain"
 
         const val COLLECTION_CATEGORY = "COLLECTION_CATEGORY"
 

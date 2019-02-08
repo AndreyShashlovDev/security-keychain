@@ -13,7 +13,7 @@ internal class AuthorizationManagerImpl(context: Context) : AuthorizationManager
 
     private val mStrategySparseArray = SparseArray<AbstractAuthorization>()
     private var mAuthorization: AbstractAuthorization
-    private val mPublishSubject: PublishSubject<AuthorizationState>
+    private val mPublishSubject: PublishSubject<AuthorizationState> = PublishSubject.create()
 
     override val type: Int
         get() = mAuthorization.type
@@ -25,7 +25,6 @@ internal class AuthorizationManagerImpl(context: Context) : AuthorizationManager
         get() = mPublishSubject.hide()
 
     init {
-        mPublishSubject = PublishSubject.create()
         addStrategy(AuthorizationManager.AUTHORIZATION_STRATEGY_STUB,
                 StubAuthorization(context))
         mAuthorization = mStrategySparseArray.get(AuthorizationManager.AUTHORIZATION_STRATEGY_STUB)
@@ -42,13 +41,15 @@ internal class AuthorizationManagerImpl(context: Context) : AuthorizationManager
 
     override fun setupStrategy(strategyId: Int) {
         val lastAuth = mAuthorization
-        val selectedAuth = mStrategySparseArray.get(strategyId) ?: throw IllegalArgumentException("strategy not found! use addStrategy before")
+        val selectedAuth =
+                mStrategySparseArray.get(strategyId) ?:
+                throw IllegalArgumentException("strategy not found! use addStrategy before")
 
-        if (mAuthorization != null || selectedAuth != mAuthorization) {
+        if (selectedAuth != mAuthorization) {
             mAuthorization = selectedAuth
         }
 
-        if (lastAuth != null && mAuthorization !== lastAuth) {
+        if (mAuthorization !== lastAuth) {
             lastAuth.destroy()
         }
     }

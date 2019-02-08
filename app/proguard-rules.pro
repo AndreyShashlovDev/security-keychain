@@ -20,10 +20,6 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keepclassmembers class com.bitclave.base.ui.view.ToolbarView {
-    private static final <fields>;
-}
-
 -keep class android.support.v7.graphics.drawable.DrawerArrowDrawable {
   public void set*(...);
   public void get*(...);

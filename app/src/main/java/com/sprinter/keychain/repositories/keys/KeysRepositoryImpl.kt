@@ -10,7 +10,6 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.subjects.BehaviorSubject
-import java.lang.Exception
 import java.util.concurrent.CopyOnWriteArrayList
 
 internal class KeysRepositoryImpl(private val preferences: Preferences) : KeysRepository {
@@ -31,12 +30,10 @@ internal class KeysRepositoryImpl(private val preferences: Preferences) : KeysRe
     }
 
     override fun loadKeys(): Single<List<Category>> {
-        return Single.fromCallable({
+        return Single.fromCallable {
             try {
                 val json = preferences.getString(Preferences.COLLECTION_CATEGORY)
-                val result: List<Category> = gson.fromJson<List<Category>>(json,
-                        typeToken) ?: ArrayList()
-                return@fromCallable result
+                return@fromCallable gson.fromJson<List<Category>>(json, typeToken) ?: ArrayList()
             } catch (e: Exception) {
                 when (e) {
                     is JsonSyntaxException, is JsonParseException, is JsonIOException -> {
@@ -45,11 +42,11 @@ internal class KeysRepositoryImpl(private val preferences: Preferences) : KeysRe
                     else -> throw e
                 }
             }
-        })
+        }
     }
 
     override fun createCategory(title: String): Single<Category> {
-        return Single.fromCallable({
+        return Single.fromCallable {
             val id = preferences.getLong(Preferences.INCREMENT_CATEGORY) + 1
             val category = Category(id, title, ArrayList<CategoryItem>())
 
@@ -60,11 +57,11 @@ internal class KeysRepositoryImpl(private val preferences: Preferences) : KeysRe
             saveKeysToPreference(categories)
 
             return@fromCallable category
-        })
+        }
     }
 
     override fun updateCategory(category: Category): Completable {
-        return Completable.fromAction({
+        return Completable.fromAction {
             val categories = loadKeys().blockingGet() as MutableList
             val pos: Int = categories.indexOf(category)
 
@@ -74,28 +71,26 @@ internal class KeysRepositoryImpl(private val preferences: Preferences) : KeysRe
             } else {
                 throw IllegalArgumentException("category not found")
             }
-        })
+        }
     }
 
     override fun removeCategory(id: Long): Completable {
-        return Completable.fromAction({
+        return Completable.fromAction {
             val result = getCategoryResult(id)
-            if (result.category != null) {
-                result.categories.remove(result.category!!)
+                result.categories.remove(result.category ?:
+                        throw IllegalArgumentException("category not found")
+                )
                 saveKeysToPreference(result.categories)
-            } else {
-                throw IllegalArgumentException("category not found")
-            }
-        })
+        }
     }
 
     override fun getCategoryById(id: Long): Single<Category> {
-        return Single.fromCallable({
+        return Single.fromCallable {
             val result = getCategoryResult(id)
 
-            return@fromCallable result.category ?: throw IllegalArgumentException(
-                    "category id not found")
-        })
+            return@fromCallable result.category ?:
+                                throw IllegalArgumentException("category id not found")
+        }
     }
 
     @WorkerThread private fun getCategoryResult(id: Long): ResultCategory {
@@ -106,11 +101,10 @@ internal class KeysRepositoryImpl(private val preferences: Preferences) : KeysRe
     }
 
     override fun createCategoryItem(categoryId: Long, title: String): Single<CategoryItem> {
-        return Single.fromCallable({
+        return Single.fromCallable {
             val result = getCategoryResult(categoryId)
 
-            val category = result.category ?: throw IllegalArgumentException(
-                    "category id not found!")
+            val category = result.category ?: throw IllegalArgumentException("category id not found!")
 
             val id = preferences.getLong(Preferences.INCREMENT_CATEGORY_ITEM) + 1
             val categoryItem = CategoryItem(id, categoryId, title, CopyOnWriteArrayList())
@@ -121,11 +115,11 @@ internal class KeysRepositoryImpl(private val preferences: Preferences) : KeysRe
             saveKeysToPreference(result.categories)
 
             return@fromCallable categoryItem
-        })
+        }
     }
 
     override fun updateCategoryItem(item: CategoryItem): Completable {
-        return Completable.fromAction({
+        return Completable.fromAction {
             val result = getCategoryResult(item.categoryId)
             result.category ?: throw IllegalArgumentException("category id not found!")
 
@@ -134,28 +128,28 @@ internal class KeysRepositoryImpl(private val preferences: Preferences) : KeysRe
                 (result.category.items as MutableList)[pos] = item
                 saveKeysToPreference(result.categories)
             }
-        })
+        }
     }
 
     override fun removeCategoryItem(categoryId: Long, itemId: Long): Completable {
-        return Completable.fromAction({
+        return Completable.fromAction {
             val result = getCategoryResult(categoryId)
             result.category ?: throw IllegalArgumentException("category id not found!")
             val item: CategoryItem? = result.category.items.single { item -> item.id == itemId }
             (result.category.items as MutableList).remove(item)
             saveKeysToPreference(result.categories)
-        })
+        }
     }
 
     override fun getCategoryItemById(categoryId: Long, categoryItemId: Long): Single<CategoryItem> {
-        return Single.fromCallable({
+        return Single.fromCallable {
             val result = getCategoryResult(categoryId)
 
             result.category ?: throw IllegalArgumentException("category id not found!")
-            val item: CategoryItem? = result.category.items.single { item -> item.id == categoryItemId }
-            return@fromCallable item ?: throw IllegalArgumentException(
-                    "category item id not found!")
-        })
+            val item: CategoryItem? =
+                    result.category.items.single { item -> item.id == categoryItemId }
+            return@fromCallable item ?: throw IllegalArgumentException("category item id not found!")
+        }
     }
 
 }

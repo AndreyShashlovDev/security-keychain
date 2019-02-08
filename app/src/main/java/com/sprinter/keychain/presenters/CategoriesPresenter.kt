@@ -38,7 +38,7 @@ class CategoriesPresenter(private val router: Router, private val keysRepository
         keysRepository.loadKeys()
                 .compose(RxUtils::async)
                 .compose(bindUntilDestroy())
-                .doFinally({ viewState.visibilityLoading(false) })
+                .doFinally { viewState.visibilityLoading(false) }
                 .subscribe(this::updateCategoryList, this::onError)
 
         keysRepository.syncCategory()
@@ -54,11 +54,11 @@ class CategoriesPresenter(private val router: Router, private val keysRepository
 
     override fun attachView(view: CategoriesView) {
         super.attachView(view)
-        disposable = toolBarClickSubject?.subscribe({
+        disposable = toolBarClickSubject?.subscribe{
             when (it) {
                 R.id.wBtnAdd -> onAddCategoryClick()
             }
-        })
+        }
     }
 
     override fun onItemClick(rootPosition: Int, subPosition: Int, id: Int, tag: String?) {

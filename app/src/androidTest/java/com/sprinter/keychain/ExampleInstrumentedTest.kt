@@ -7,6 +7,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import android.R.id.edit
+import android.content.SharedPreferences
+
+
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -21,5 +25,4 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getTargetContext()
         assertEquals("com.sprinter.keychain", appContext.packageName)
     }
-
 }

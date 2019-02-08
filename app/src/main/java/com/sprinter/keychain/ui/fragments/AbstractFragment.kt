@@ -31,9 +31,10 @@ abstract class AbstractFragment<E : MvpPresenter<*>> : MvpAppCompatFragment(), B
     private val injectLayoutAnnotation: BindLayout?
         get() {
             var annotation: BindLayout?
-            var typeToLookUp: Class<*>? = javaClass
+            var typeToLookUp: Class<*> = javaClass
             while (true) {
-                annotation = typeToLookUp!!.getAnnotation(BindLayout::class.java) as BindLayout
+                annotation = typeToLookUp.getAnnotation(BindLayout::class.java) as BindLayout
+
                 if (annotation != null) {
                     break
                 }
@@ -106,7 +107,7 @@ abstract class AbstractFragment<E : MvpPresenter<*>> : MvpAppCompatFragment(), B
             bundle: Bundle?) {
         dialogDisposable = InputTextDialogFragment.showDialog(fragmentManager!!, message, value,
                 maxLen, requestCode, bundle).compose(RxUtils::async).subscribe(
-                this::onDialogMessageResult, { throwable -> Timber.e(throwable, "dialog") })
+                this::onDialogMessageResult) { throwable -> Timber.e(throwable, "dialog") }
     }
 
     override fun showDialogInput(message: Int, value: String, maxLen: Int, requestCode: Int,
@@ -115,7 +116,7 @@ abstract class AbstractFragment<E : MvpPresenter<*>> : MvpAppCompatFragment(), B
         showDialogInput(messageText, value, maxLen, requestCode, bundle)
     }
 
-    override open fun onDialogMessageResult(result: TupleDialogResult) {
+    open override fun onDialogMessageResult(result: TupleDialogResult) {
         // override if need
     }
 

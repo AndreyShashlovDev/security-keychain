@@ -4,7 +4,7 @@ interface SecurityPreferences : Preferences {
 
     companion object {
 
-        val KEYSTORE_ALIAS_NAME = "KeyChain"
+        const val KEYSTORE_ALIAS_NAME = "KeyChain"
 
     }
 

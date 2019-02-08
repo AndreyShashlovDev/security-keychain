@@ -34,10 +34,10 @@ class KeyPairHolder(itemView: View) : AbstractHolder<Pair<String, String>>(itemV
         itemView.liKeyPairKeyType.onItemSelectedListener = this
         itemView.liKeyPairDelete.setOnClickListener(this)
 
-        itemView.liKeyPairCopy.setOnClickListener({ view ->
+        itemView.liKeyPairCopy.setOnClickListener { view ->
             itemView.swipeKeyItem.close()
             listener?.onItemClick(adapterPosition, view.id, null)
-        })
+        }
 
         itemView.liKeyPairKeyType.adapter = keyTypeAdapter
         val pos = keyTypeAdapter.getPosition(model.first)

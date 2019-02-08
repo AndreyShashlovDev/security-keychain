@@ -2,6 +2,7 @@ package com.sprinter.keychain.presenters
 
 import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
 import android.os.Vibrator
 import com.arellomobile.mvp.InjectViewState
 import com.sprinter.keychain.R
@@ -96,8 +97,18 @@ class AuthorizationPresenter constructor(private val authManager: AuthorizationM
         }
 
         viewState.activatePinDot(position, activated)
+
         if (vibrator.hasVibrator()) {
-            vibrator.vibrate(VIBRATE_DURATION_MS_ON_CLICK)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val effect = VibrationEffect.createOneShot(
+                        VIBRATE_DURATION_MS_ON_CLICK,
+                        VibrationEffect.DEFAULT_AMPLITUDE
+                )
+                vibrator.vibrate(effect)
+
+            } else if (Build.VERSION.SDK_INT <Build.VERSION_CODES.O) {
+                vibrator.vibrate(VIBRATE_DURATION_MS_ON_CLICK)
+            }
         }
 
         if (pinBuilder.length == PinDotsView.COUNT_DOTS + 1) {
